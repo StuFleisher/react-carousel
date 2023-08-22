@@ -13,4 +13,12 @@ const TEST_IMAGES = [
   },
 ];
 
+const TEST_CARD = {
+  caption:"testing image 1",
+  src:"test1.com",
+  currNum:1,
+  totalNum:5,
+}
+
 export default TEST_IMAGES
+export {TEST_CARD}
