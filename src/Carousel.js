@@ -14,7 +14,7 @@ import Card from "./Card";
  *
  * App --> Carousel --> Card
  */
- function Carousel({ photos, title }) {
+function Carousel({ photos, title }) {
   const [currCardIdx, setCurrCardIdx] = useState(0);
 
   const currCard = photos[currCardIdx];
@@ -23,29 +23,47 @@ import Card from "./Card";
   //Increments currCardIdx state by 1
   function goForward() {
     setCurrCardIdx(currCardIdx + 1);
-    //TODO: implement looping using %
   }
-  
-  //TODO: implement go backward
+
+  //Decrements currCardIdx state by 1
+  function goBackward() {
+    setCurrCardIdx(currCardIdx - 1);
+  }
+
+  //Checks if current image is first image, returns boolean
+  function isFirstImage() {
+    if (currCardIdx === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  //Checks if current image is last image, returns boolean
+  function isLastImage() {
+    if (currCardIdx === (photos.length - 1)) {
+      return true;
+    }
+    return false;
+  }
 
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i
+        {isFirstImage() ? null : <i
           className="bi bi-arrow-left-circle"
-          onClick={goForward}
-        />
+          onClick={goBackward}
+        />}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        <i
+        {isLastImage() ? null : <i
           className="bi bi-arrow-right-circle"
           onClick={goForward}
-        />
+        />}
       </div>
     </div>
   );
