@@ -50,9 +50,13 @@ function Carousel({ photos, title }) {
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        {isFirstImage() ? null : <i
-          className="bi bi-arrow-left-circle"
-          onClick={goBackward}
+        {isFirstImage()
+          ?
+            null
+          :
+            <i
+            className="bi bi-arrow-left-circle"
+            onClick={goBackward}
         />}
         <Card
           caption={currCard.caption}
@@ -60,9 +64,13 @@ function Carousel({ photos, title }) {
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        {isLastImage() ? null : <i
-          className="bi bi-arrow-right-circle"
-          onClick={goForward}
+        {isLastImage()
+          ?
+            null
+          :
+            <i
+            className="bi bi-arrow-right-circle"
+            onClick={goForward}
         />}
       </div>
     </div>
